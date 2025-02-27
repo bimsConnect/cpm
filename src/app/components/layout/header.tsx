@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "../ui/button";
+import { Sheet, SheetTrigger, SheetContent } from "../ui/sheet";
 import Login from "../../login/page";
 
 interface NavItem {
@@ -16,15 +17,16 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: "Home", href: "#home" },
   { name: "Tentang Kami", href: "#about" },
-  { name: "Services", href: "#services" },
+  { name: "Mengapa kami?", href: "#services" },
   { name: "Galeri", href: "#projects" },
+  { name: "Blog" , href: "#blog" },
   { name: "Kontak", href: "#contact" },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false); // State untuk modal login
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,11 +38,12 @@ export default function Header() {
   }, []);
 
   const handleLogin = () => {
-    setIsLoginModalOpen(true); // Buka modal login
+    setIsLoginModalOpen(true);
   };
 
   return (
     <>
+      {/* Top Header */}
       <div className="bg-primary text-white py-2 hidden md:block">
         <div className="container flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -64,16 +67,35 @@ export default function Header() {
         </div>
       </div>
 
-      <motion.header className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"}`} initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
-        <div className="container flex justify-between items-center">
+      {/* Navbar */}
+      <motion.header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white shadow-md"
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="container flex justify-between items-center py-4">
+          {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/logo.webp?height=40&width=200" alt="Cipta Mandiri Perkasa" width={200} height={40} className="h-10 w-auto" />
+            <Image
+              src="/logo.webp?height=40&width=200"
+              alt="Cipta Mandiri Perkasa"
+              width={200}
+              height={40}
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link key={item.name} href={item.href} className="text-foreground hover:text-primary font-medium transition-colors">
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-foreground hover:text-primary font-medium transition-colors"
+              >
                 {item.name}
               </Link>
             ))}
@@ -81,18 +103,19 @@ export default function Header() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="md:hidden bg-white">
-              <div className="container py-4 flex flex-col space-y-4">
+          <Sheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <SheetTrigger onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </SheetTrigger>
+            <SheetContent>
+              <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
-                  <Link key={item.name} href={item.href} className="text-foreground hover:text-primary font-medium py-2 transition-colors" onClick={() => setIsOpen(false)}>
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-foreground hover:text-primary font-medium py-2 transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
                     {item.name}
                   </Link>
                 ))}
@@ -100,9 +123,9 @@ export default function Header() {
                   Login
                 </Button>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </SheetContent>
+          </Sheet>
+        </div>
       </motion.header>
 
       {/* Login Modal */}

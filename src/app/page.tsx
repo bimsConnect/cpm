@@ -7,7 +7,8 @@ import Testimonials from "./components/sections/testimonial"
 import Contact from "./components/sections/contact"
 import Footer from "./components/layout/footer"
 import Header from "./components/layout/header"
-import Blog from "./components/sections/blog"
+import Blog from "./components/sections/blog-section"
+import StatsSection from "./components/sections/web-statistic" 
 
 export const metadata: Metadata = {
   title: "Cipta Mandiri Perkasa - Construction & Building Services",
@@ -25,8 +26,15 @@ export default function Home() {
         <About />
         <Services />
         <Projects />
+        <Blog />
         <Testimonials />
         <Contact />
+        <main className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
+        <h1 className="text-3xl font-bold mb-4">Statistik website</h1>
+        <p className="text-gray-700 mb-8"></p>
+        {/* Statistik Website */}
+        <StatsSection />
+        </main>
       </main>
       <Footer />
     </>

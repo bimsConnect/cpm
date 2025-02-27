@@ -62,14 +62,6 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                 Login
               </Button>
             </form>
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
-                Belum punya akun?{" "}
-                <a href="#" className="text-primary hover:underline">
-                  Daftar di sini
-                </a>
-              </p>
-            </div>
           </motion.div>
         </motion.div>
       )}

@@ -49,7 +49,7 @@ export default function About() {
           property="og:description"
           content="Spesialis pembuatan kubah GRC, ornamen, masjid, kerawangan, menara, dan motif awan kaligrafi."
         />
-        <meta property="og:image" content="/placeholder.svg" />
+        <meta property="og:image" content="/kubah1.webp" />
         <meta property="og:url" content="https://www.ciptamandiriperkasa.com/about" />
       </Head>
 

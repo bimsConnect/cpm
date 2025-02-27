@@ -83,10 +83,10 @@ export default function Contact() {
           className="text-center mb-12"
         >
           <h2 className="section-title">
-            Contact <span className="text-primary">Us</span>
+            Hubungi <span className="text-primary">Kami</span>
           </h2>
           <p className="section-subtitle">
-            Get in touch with us for any inquiries or to discuss your project requirements.
+          Hubungi kami untuk pertanyaan apa pun atau untuk mendiskusikan persyaratan proyek Anda.
           </p>
         </motion.div>
 
@@ -97,10 +97,10 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
+            <h3 className="text-2xl font-bold mb-6">Hubungi</h3>
             <p className="text-muted-foreground mb-8">
-              Have questions or want to discuss your project? Fill out the form below and our team will get back to you
-              as soon as possible.
+            Ada pertanyaan atau ingin mendiskusikan proyek Anda? Isi formulir di bawah ini dan tim kami akan menghubungi Anda
+            sesegera mungkin.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -133,7 +133,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-1">
-                    Your Name
+                    Nama Kamu
                   </label>
                   <Input
                     id="name"
@@ -163,7 +163,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium mb-1">
-                    Phone Number
+                    No.HP
                   </label>
                   <Input
                     id="phone"
@@ -175,7 +175,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                    Subject
+                    Subjek
                   </label>
                   <Input
                     id="subject"
@@ -190,7 +190,7 @@ export default function Contact() {
 
               <div className="mb-4">
                 <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Your Message
+                  Pesan
                 </label>
                 <Textarea
                   id="message"

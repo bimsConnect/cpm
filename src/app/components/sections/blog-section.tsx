@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Calendar, User } from "lucide-react"
 import { Button } from "../ui/button"
 import { getBlogPosts } from "../../../../lib/blog-data"
@@ -43,7 +44,7 @@ export default function BlogSection() {
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Wawasan dan Artikel Terbaru</h2>
           <p className="text-lg text-muted-foreground">
-          Tetap terupdate dengan tren, tips, dan wawasan terbaru dari para ahli kami. Blog kami membahas berbagai topik untuk membantu Anda tetap terdepan di dunia digital.
+            Tetap terupdate dengan tren, tips, dan wawasan terbaru dari para ahli kami. Blog kami membahas berbagai topik untuk membantu Anda tetap terdepan di dunia digital.
           </p>
         </motion.div>
 
@@ -61,11 +62,13 @@ export default function BlogSection() {
               className="bg-background rounded-xl overflow-hidden shadow-lg border border-border hover:shadow-xl transition-shadow"
             >
               <Link href={`/blog/${post.slug}`} className="block">
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img
+                <div className="aspect-[16/9] overflow-hidden relative">
+                  <Image
                     src={post.image || "/Kubah1.webp"}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-500 hover:scale-105"
                   />
                 </div>
               </Link>

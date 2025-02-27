@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Calendar, User, Search } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
@@ -23,7 +24,7 @@ export default function BlogPage() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Blog Kami</h1>
           <p className="text-lg text-muted-foreground">
-          Jelajahi artikel, wawasan, dan tren industri terbaru kami untuk mendapatkan informasi dan inspirasi.
+            Jelajahi artikel, wawasan, dan tren industri terbaru kami untuk mendapatkan informasi dan inspirasi.
           </p>
         </div>
 
@@ -46,11 +47,14 @@ export default function BlogPage() {
                   className="bg-background rounded-xl overflow-hidden shadow-md border border-border hover:shadow-lg transition-shadow"
                 >
                   <Link href={`/blog/${post.slug}`} className="block">
-                    <div className="aspect-[16/9] overflow-hidden">
-                      <img
+                    <div className="aspect-[16/9] overflow-hidden relative">
+                      <Image
                         src={post.image || "/placeholder.svg"}
                         alt={post.title}
+                        width={800}
+                        height={450}
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        priority
                       />
                     </div>
                   </Link>
@@ -106,4 +110,3 @@ export default function BlogPage() {
     </div>
   )
 }
-

@@ -61,7 +61,7 @@ export default function Projects() {
     image: string;
     description: string;
   } | null>(null)
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+
 
   const filteredProjects = activeCategory === "All"
     ? projects
@@ -118,8 +118,6 @@ export default function Projects() {
                 transition={{ duration: 0.5 }}
                 className="relative overflow-hidden rounded-lg shadow-md group cursor-pointer"
                 onClick={() => setSelectedProject(project)}
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
               >
                 <Image
                   src={project.image}

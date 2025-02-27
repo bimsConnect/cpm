@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
@@ -61,11 +61,6 @@ export default function Testimonials() {
   const next = useCallback(() => {
     setDirection(1);
     setCurrent((prev) => (prev + 1) % testimonials.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, []);
 
   useEffect(() => {
@@ -146,7 +141,7 @@ export default function Testimonials() {
                   />
                 ))}
               </motion.div>
-              <motion.p className="text-lg italic mb-6">"{testimonials[current].content}"</motion.p>
+              <motion.p className="text-lg italic mb-6">&quot;{testimonials[current].content}&quot;</motion.p>
               <motion.h3 className="font-bold text-lg">{testimonials[current].name}</motion.h3>
               <p className="text-muted-foreground">{testimonials[current].position}</p>
             </motion.div>

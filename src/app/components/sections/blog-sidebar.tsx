@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Search, Tag, Calendar } from "lucide-react"
 import { Input } from "../ui/input"
@@ -16,13 +17,8 @@ export default function BlogSidebar({ currentSlug }: BlogSidebarProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const allPosts = getBlogPosts()
 
-  // Get recent posts (excluding current post if on a post page)
   const recentPosts = allPosts.filter((post) => post.slug !== currentSlug).slice(0, 4)
-
-  // Get categories from all posts
   const categories = [...new Set(allPosts.map((post) => post.category))]
-
-  // Get all tags (dummy data)
   const tags = ["Design", "Technology", "Marketing", "Business", "Strategy", "Development", "UX/UI", "Branding"]
 
   return (
@@ -57,8 +53,14 @@ export default function BlogSidebar({ currentSlug }: BlogSidebarProps) {
         <div className="space-y-4">
           {recentPosts.map((post, index) => (
             <div key={index} className="flex gap-3">
-              <div className="w-16 h-16 rounded-md overflow-hidden flex-shrink-0">
-                <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-full object-cover" />
+              <div className="w-16 h-16 rounded-md overflow-hidden flex-shrink-0 relative">
+                <Image
+                  src={post.image || "/placeholder.svg"}
+                  alt={post.title}
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <Link
@@ -143,4 +145,3 @@ export default function BlogSidebar({ currentSlug }: BlogSidebarProps) {
     </aside>
   )
 }
-
